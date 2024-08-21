@@ -1,0 +1,251 @@
+CREATE DATABASE College_DB;
+USE College_DB;
+CREATE TABLE Students (
+    S_ID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Gender VARCHAR(10),
+    Age INT,
+    YearOfStudy VARCHAR(50)
+);
+INSERT INTO Students (S_ID, Name, Gender, Age, YearOfStudy) VALUES
+(1, 'Arun', 'Male', 20, 'Second Year'),
+(2, 'Meena', 'Female', 19, 'First Year'),
+(3, 'Karthik', 'Male', 21, 'Third Year'),
+(4, 'Lakshmi', 'Female', 22, 'Final Year'),
+(5, 'Vijay', 'Male', 18, 'First Year'),
+(6, 'Priya', 'Female', 20, 'Second Year'),
+(7, 'Ravi', 'Male', 22, 'Final Year'),
+(8, 'Anitha', 'Female', 21, 'Third Year'),
+(9, 'Muthu', 'Male', 19, 'First Year'),
+(10, 'Sangeetha', 'Female', 20, 'Second Year'),
+(11, 'Rajesh', 'Male', 21, 'Third Year'),
+(12, 'Divya', 'Female', 22, 'Final Year'),
+(13, 'Saravanan', 'Male', 20, 'Second Year'),
+(14, 'Kavitha', 'Female', 19, 'First Year'),
+(15, 'Senthil', 'Male', 22, 'Final Year'),
+(16, 'Gayathri', 'Female', 21, 'Third Year'),
+(17, 'Mani', 'Male', 18, 'First Year'),
+(18, 'Nithya', 'Female', 20, 'Second Year'),
+(19, 'Suresh', 'Male', 21, 'Third Year'),
+(20, 'Deepa', 'Female', 22, 'Final Year'),
+(21, 'Ganesh', 'Male', 19, 'First Year'),
+(22, 'Radha', 'Female', 20, 'Second Year'),
+(23, 'Kumar', 'Male', 21, 'Third Year'),
+(24, 'Shanthi', 'Female', 22, 'Final Year'),
+(25, 'Selva', 'Male', 18, 'First Year');
+select * from Students;
+CREATE TABLE Fees_detail (
+    F_ID INT ,
+    S_ID INT,
+    Amount DECIMAL(10, 2),
+    DueDate DATE,
+    PaymentDate DATE,
+    Paid VARCHAR(3),
+    FOREIGN KEY (S_ID) REFERENCES Students(S_ID)
+);
+INSERT INTO Fees_detail(F_ID, S_ID, Amount, DueDate, PaymentDate, Paid) VALUES
+(1, 1, 15000.00, '2024-09-10', '2024-09-05', 'Yes'),
+(2, 2, 16000.00, '2024-09-10', NULL, 'No'),
+(3, 3, 17000.00, '2024-09-10', '2024-09-08', 'Yes'),
+(4, 4, 15500.00, '2024-09-10', NULL, 'No'),
+(5, 5, 18000.00, '2024-09-10', '2024-09-07', 'Yes'),
+(6, 6, 14000.00, '2024-09-10', NULL, 'No'),
+(7, 7, 15000.00, '2024-09-10', '2024-09-06', 'Yes'),
+(8, 8, 13000.00, '2024-09-10', NULL, 'No'),
+(9, 9, 16500.00, '2024-09-10', '2024-09-05', 'Yes'),
+(10, 10, 17500.00, '2024-09-10', NULL, 'No'),
+(11, 11, 16000.00, '2024-09-10', '2024-09-08', 'Yes'),
+(12, 12, 14500.00, '2024-09-10', NULL, 'No'),
+(13, 13, 17000.00, '2024-09-10', '2024-09-07', 'Yes'),
+(14, 14, 15000.00, '2024-09-10', NULL, 'No'),
+(15, 15, 15500.00, '2024-09-10', '2024-09-06', 'Yes'),
+(16, 16, 16000.00, '2024-09-10', NULL, 'No'),
+(17, 17, 18000.00, '2024-09-10', '2024-09-05', 'Yes'),
+(18, 18, 14000.00, '2024-09-10', NULL, 'No'),
+(19, 19, 16500.00, '2024-09-10', '2024-09-08', 'Yes'),
+(20, 20, 15000.00, '2024-09-10', NULL, 'No'),
+(21, 21, 17500.00, '2024-09-10', '2024-09-07', 'Yes'),
+(22, 22, 16000.00, '2024-09-10', NULL, 'No'),
+(23, 23, 17000.00, '2024-09-10', '2024-09-06', 'Yes'),
+(24, 24, 15000.00, '2024-09-10', NULL, 'No'),
+(25, 25, 15500.00, '2024-09-10', '2024-09-05', 'Yes');
+select * from Fees_details;
+CREATE TABLE Scholarship (
+    Scholarship_ID INT PRIMARY KEY,
+    S_ID INT,
+    ScholarshipName VARCHAR(100),
+    Amount DECIMAL(10, 2),
+    AwardDate DATE,
+    FOREIGN KEY (S_ID) REFERENCES Students(S_ID)
+);
+INSERT INTO Scholarship (Scholarship_ID, S_ID, ScholarshipName, Amount, AwardDate) VALUES
+(1, 1, 'Merit Scholarship', 15000.00, '2024-07-01'),
+(2, 8, 'SC/ST Scholarship', 13000.00, '2024-07-05'),
+(3, 5, 'Academic Excellence Scholarship', 18000.00, '2024-07-10'),
+(4, 4, 'Athletic Scholarship', 15500.00, '2024-07-15'),
+(5, 25, 'Community Service Scholarship', 15000.00, '2024-07-20');
+select * from Scholarship;
+CREATE TABLE Faculty_detail (
+    FacultyID INT PRIMARY KEY AUTO_INCREMENT,
+    FacultyName VARCHAR(100) NOT NULL,
+    DepartmentName VARCHAR(100) NOT NULL
+);
+INSERT INTO Faculty_detail(FacultyName,DepartmentName) VALUES
+('Dr. Arul Selvan','Computer Science'),
+('Prof. Bhavani Ramachandran','IT'),
+('Dr. Chithra Subramanian','AGRI'),
+('Prof. Dhanush Karthik','Computer Science'),
+('Dr. Eswari Manohar','AGRI'),
+('Dr. Fathima Banu','IT'),
+('Prof. Gopalakrishnan Iyer','AIDS'),
+('Dr. Hema Lakshmi','Computer Science'),
+('Prof. Iyyappan Rajagopal','ECE'),
+('Dr. Jeyashree Kannan','AIDS');
+select * from Faculty_detail;
+CREATE TABLE Department (
+    DepartmentID INT PRIMARY KEY AUTO_INCREMENT,
+    DepartmentName VARCHAR(100) NOT NULL,
+    HeadOfDepartmentID INT,
+    FacultyCount INT,
+    FOREIGN KEY (HeadOfDepartmentID) REFERENCES Faculty_detail(FacultyID)
+);
+INSERT INTO Department (DepartmentName, HeadOfDepartmentID, FacultyCount) VALUES
+('Computer Science', 1, 3),
+('IT', 2, 2),
+('AIDS', 3, 2),
+('AGRI', 4, 2),
+('ECE', 5, 1);
+select * from Department;
+CREATE TABLE Hostel (
+    HostelID INT PRIMARY KEY AUTO_INCREMENT,
+    HostelName VARCHAR(100) NOT NULL,
+    Address VARCHAR(255),
+    NumberOfFloors INT,
+    HostelType VARCHAR(50)
+);
+INSERT INTO Hostel (HostelName, Address, NumberOfFloors, HostelType) VALUES
+('A Block Hostel', '1 College Lane, Chennai', 4, 'Boys'),
+('B Block Hostel', '2 College Avenue, Chennai', 5, 'Girls'),
+('C Block Hostel', '3 University Road, Chennai', 6, 'Co-ed'),
+('D Block Hostel', '4 Campus Road, Chennai', 3, 'Boys'),
+('E Block Hostel', '5 Main Street, Chennai', 7, 'Girls');
+select *from  Hostel;
+CREATE TABLE HostelStudents_details (
+    S_ID INT PRIMARY KEY,
+    HostelID INT,
+    RoomNumber VARCHAR(50),
+    FOREIGN KEY (S_ID) REFERENCES Students(S_ID),
+    FOREIGN KEY (HostelID) REFERENCES Hostel(HostelID)
+);
+INSERT INTO HostelStudents_details(S_ID, HostelID, RoomNumber) VALUES
+(1, 1, 'A-201'),
+(2, 1, 'A-203'),
+(11, 1, 'A-206'),
+(5, 4, 'D-205'),
+(8, 3, 'C-204');
+select *from HostelStudents_details;
+CREATE TABLE transport_detail ( S_ID int,
+    transport_id INT ,
+    transport_type VARCHAR(60),
+    route VARCHAR(20),
+    driver_name VARCHAR(60),
+    contact_number VARCHAR(15)
+);
+INSERT INTO transport_detail ( S_ID,transport_id, transport_type, route, driver_name, contact_number) VALUES
+('3',1, 'Bus', 'Route 10', 'Kumaran', '456790123'),
+('6',1, 'Bus', 'Route 10', 'Kumaran', '456790123'),
+('4',1, 'Bus', 'Route 10', 'Kumaran', '456790123'),
+('9',1, 'Bus', 'Route 10', 'Kumaran', '456790123'),
+('7',1, 'Bus', 'Route 10', 'Kumaran', '456790123'),
+('13',1, 'Bus', 'Route 10', 'Kumaran', '456790123'),
+('10',2,'Van', 'Route 11',  'Saran', '1235698456'),
+('14',2, 'Van', 'Route 11', 'Saran', '1235698456'),
+('12',2, 'Van', 'Route 11', 'Saran', '1235698456'),
+('16',2, 'Van', 'Route 11','Saran', '1235698456'),
+('17',2, 'Van', 'Route 11', 'Saran', '1235698456'),
+('15',2,'Van', 'Route 11', 'Saran', '1235698456'),
+('19',2, 'Van', 'Route 11', 'Saran', '1235698456'),
+('18',2, 'Van', 'Route 11', 'Saran', '1235698456'),
+('20',2, 'Van', 'Route 11','Saran', '1235698456'),
+('21',1, 'Bus', 'Route 10', 'Kumaran', '456790123'),
+('22',1, 'Bus', 'Route 10', 'Kumaran', '456790123'),
+('23',1, 'Bus', 'Route 10', 'Kumaran', '456790123'),
+('24',1, 'Bus', 'Route 10', 'Kumaran', '456790123'),
+('25',1, 'Bus', 'Route 10', 'Kumaran', '456790123');
+select *from transport_detail;
+CREATE TABLE LibraryBook_details (
+    CategoryID INT PRIMARY KEY AUTO_INCREMENT,
+    CategoryName VARCHAR(100) NOT NULL,
+    NumberOfBooks INT NOT NULL
+);
+INSERT INTO LibraryBook_details  (CategoryName, NumberOfBooks)VALUES 
+('CSE', 120),
+('IT', 80),
+('AIDS', 60),
+('AGRI', 50),
+('ECE', 70),
+('Aptitude', 40);
+SELECT * FROM LibraryBook_details ;
+CREATE TABLE placed_students (
+placement_id INT NOT NULL PRIMARY KEY,
+ S_ID INT NOT NULL,
+company_name VARCHAR(100),
+package FLOAT
+);
+INSERT INTO placed_students (placement_id, S_id, company_name, package) VALUES
+(1, 1, 'Tech Mahindra', 3.5),
+(2, 2, 'Infosys', 4.0),
+(3, 3, 'TCS', 3.8),
+(4, 4, 'Wipro', 4.2),
+(5, 5, 'Capgemini', 3.6),
+(6, 6, 'HCL', 3.9),
+(7, 7, 'Cognizant', 4.1),
+(8, 8, 'Accenture', 3.7),
+(9, 9, 'IBM', 4.3),
+(10, 10, 'Amazon', 5.0),
+(11, 11, 'Google', 6.0),
+(12, 12, 'Microsoft', 6.5),
+(13, 13, 'Oracle', 5.5),
+(14, 14, 'Adobe', 5.8),
+(15, 15, 'Facebook', 6.2),
+(16, 16, 'Apple', 7.0),
+(17, 17, 'Dell', 4.0),
+(18, 18, 'HP', 4.5),
+(19, 19, 'Cisco', 5.0),
+(20, 20, 'Intel', 5.6),
+(21, 21, 'Samsung', 4.8),
+(22, 22, 'LG', 4.7),
+(23, 23, 'Sony', 4.9),
+(24, 24, 'Lenovo', 4.4),
+(25, 25, 'Philips', 4.6);
+SELECT * FROM placed_students;
+select 
+    Students.S_ID, Students.Name, Students.Gender, Students.Age, Students.YearOfStudy,
+    Fees_detail.Amount AS FeeAmount, Fees_detail.Paid AS FeePaid, 
+    Scholarship.ScholarshipName, Scholarship.Amount AS ScholarshipAmount,
+    Faculty_detail.FacultyName, Faculty_detail.DepartmentName,
+    Department.DepartmentName AS DeptName, Department.FacultyCount,
+    Hostel.HostelName, Hostel.Address, HostelStudents_details.RoomNumber,
+    transport_detail.transport_type, transport_detail.route,
+    LibraryBook_details.CategoryName, LibraryBook_details.NumberOfBooks,
+    placed_students.company_name, placed_students.package
+FROM 
+    Students
+LEFT JOIN 
+    Fees_detail ON Students.S_ID = Fees_detail.S_ID
+LEFT JOIN 
+    Scholarship ON Students.S_ID = Scholarship.S_ID
+LEFT JOIN 
+    HostelStudents_details ON Students.S_ID = HostelStudents_details.S_ID
+LEFT JOIN 
+    Hostel ON HostelStudents_details.HostelID = Hostel.HostelID
+LEFT JOIN 
+    transport_detail ON Students.S_ID = transport_detail.S_ID
+LEFT JOIN 
+    placed_students ON Students.S_ID = placed_students.S_ID
+LEFT JOIN 
+    Department ON Students.S_ID = Department.HeadOfDepartmentID
+LEFT JOIN 
+    Faculty_detail ON Faculty_detail.FacultyID = Department.HeadOfDepartmentID
+LEFT JOIN 
+    LibraryBook_details ON LibraryBook_details.CategoryID = Department.DepartmentID;
